@@ -5,9 +5,18 @@ export const CrystalBall: React.FC<CrystalBallProps> = ({ isShaking, isLoading, 
   return (
     <div className="relative w-[300px] h-[300px] md:w-[420px] md:h-[420px] flex items-center justify-center my-4">
       
+      {/* Pepe Wizard Character - Background Layer */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[160%] md:w-[150%] z-0 pointer-events-none opacity-90">
+          <img 
+            src="https://i.postimg.cc/hGCdt8v1/Untitled-design-(91).png" 
+            alt="Pepe Wizard"
+            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(20,241,149,0.15)]" 
+          />
+      </div>
+
       {/* Intense Outer Glow/Aura to separate from background */}
-      <div className={`absolute inset-0 rounded-full bg-solana-purple opacity-40 blur-[50px] mix-blend-screen transition-all duration-1000 ${isLoading ? 'animate-pulse scale-110' : 'scale-105'}`}></div>
-      <div className={`absolute inset-4 rounded-full bg-solana-green opacity-20 blur-[30px] mix-blend-overlay`}></div>
+      <div className={`absolute inset-0 rounded-full bg-solana-purple opacity-40 blur-[50px] mix-blend-screen transition-all duration-1000 z-10 ${isLoading ? 'animate-pulse scale-110' : 'scale-105'}`}></div>
+      <div className={`absolute inset-4 rounded-full bg-solana-green opacity-20 blur-[30px] mix-blend-overlay z-10`}></div>
       
       {/* The Ball Container */}
       <div className={`relative w-full h-full rounded-full z-20 transition-transform ${isShaking ? 'animate-shake' : 'animate-float'}`}>

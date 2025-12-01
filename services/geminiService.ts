@@ -1,8 +1,15 @@
 import { GoogleGenAI } from "@google/genai";
 import { PredictionResult } from "../types";
 
-// Initialize Gemini
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Helper to get AI instance safely
+const getAI = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.warn("API Key is missing!");
+    return null;
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 const MODEL_NAME = "gemini-2.5-flash";
 
@@ -38,6 +45,18 @@ const LINK_MAP = {
 };
 
 export async function getGeminiPrediction(query: string, currentSolPrice: string): Promise<PredictionResult> {
+  const ai = getAI();
+  
+  // Handle missing API Key gracefully
+  if (!ai) {
+    return {
+      text: "My vision is dark... (API Key Missing in Vercel Settings)",
+      outcomeColor: "text-red-500",
+      ctaLink: "https://vercel.com/docs/projects/environment-variables",
+      ctaText: "Configure Env Vars"
+    };
+  }
+
   try {
     const prompt = `
       Context: Current Solana (SOL) Price is ${currentSolPrice}.
