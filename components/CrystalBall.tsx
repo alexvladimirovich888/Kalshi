@@ -6,7 +6,8 @@ export const CrystalBall: React.FC<CrystalBallProps> = ({ isShaking, isLoading, 
     <div className="relative w-[300px] h-[300px] md:w-[420px] md:h-[420px] flex items-center justify-center my-4">
       
       {/* Pepe Wizard Character - Background Layer */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[160%] md:w-[150%] z-0 pointer-events-none opacity-90">
+      {/* Added animate-breathe for subtle life-like movement */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] w-[160%] md:w-[150%] z-0 pointer-events-none opacity-90 animate-breathe">
           <img 
             src="https://i.postimg.cc/hGCdt8v1/Untitled-design-(91).png" 
             alt="Pepe Wizard"
